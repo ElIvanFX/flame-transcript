@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101010">
+
+    <title>Subiendo tu ticket | FlameHosting</title>
+    <meta name="description" content="Espera unos minutos mientras se procesa tu ticket de soporte de FlameHosting.">
+
+    <style>
+        :root {
+            --bg: #101010;
+            --card: #171717;
+            --primary: #ff8a24;
+            --text: #f5f5f5;
+            --muted: #a3a3a3;
+            --border: #2b2b2b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter, -apple-system, BlinkMacSystemFont,
+                         "Segoe UI", sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 470px;
+            text-align: center;
+            animation: appear .5s ease both;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            color: var(--text);
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: -.3px;
+        }
+
+        .brand-icon {
+            display: grid;
+            place-items: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            color: #111;
+            background: var(--primary);
+        }
+
+        .brand-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .card {
+            padding: 40px 30px 32px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .icon-wrapper {
+            width: 68px;
+            height: 68px;
+            margin: 0 auto 25px;
+            display: grid;
+            place-items: center;
+            border-radius: 15px;
+            background: #262019;
+            border: 1px solid #443021;
+        }
+
+        .icon-wrapper svg {
+            width: 34px;
+            height: 34px;
+            stroke: var(--primary);
+        }
+
+        h1 {
+            font-size: clamp(24px, 5vw, 29px);
+            line-height: 1.3;
+            letter-spacing: -.7px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        .description {
+            max-width: 350px;
+            margin: 0 auto;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .progress-section {
+            margin-top: 28px;
+            padding: 18px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: #131313;
+        }
+
+        .status {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            font-size: 13px;
+            color: #dedede;
+        }
+
+        .spinner {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            border: 2px solid #49301d;
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin .8s linear infinite;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 4px;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #303030;
+        }
+
+        .progress-bar {
+            width: 35%;
+            height: 100%;
+            border-radius: inherit;
+            background: var(--primary);
+            animation: loading 2s ease-in-out infinite;
+        }
+
+        .notice {
+            margin-top: 22px;
+            color: #858585;
+            font-size: 12px;
+            line-height: 1.7;
+        }
+
+        .footer {
+            margin-top: 25px;
+            color: #777;
+            font-size: 12px;
+        }
+
+        .footer span {
+            color: var(--primary);
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes loading {
+            0% {
+                transform: translateX(-110%);
+            }
+            50% {
+                transform: translateX(190%);
+            }
+            100% {
+                transform: translateX(350%);
+            }
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 18px;
+            }
+
+            .card {
+                padding: 32px 20px 26px;
+            }
+
+            .brand {
+                margin-bottom: 24px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+
+        <section class="card" aria-labelledby="page-title">
+
+            <h1 id="page-title">
+                Estamos subiendo ticket
+            </h1>
+
+            <p class="description">
+                Tu solicitud se está procesando. Esto puede tardar
+                unos minutos, así que ten un poco de paciencia
+                mientras terminamos de prepararlo.
+            </p>
+
+            <div class="progress-section" role="status" aria-live="polite">
+
+                <div class="status">
+                    <span class="spinner" aria-hidden="true"></span>
+                    <span>Procesando solicitud...</span>
+                </div>
+
+                <div class="progress-track" aria-hidden="true">
+                    <div class="progress-bar"></div>
+                </div>
+
+            </div>
+
+            <p class="notice">
+                No cierres esta página si el proceso sigue en curso.
+                Te avisaremos cuando tu ticket esté listo.
+            </p>
+
+        </section>
+
+        <footer class="footer">
+            Gracias por tu paciencia.
+            <span>FlameHosting</span>
+        </footer>
+
+    </main>
+</body>
+</html>
